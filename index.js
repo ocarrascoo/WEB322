@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     res.redirect('/about');
 });
 
-const storeService = require('./store-service');
+const storeService = require('./store-service.js');
 
 
 
