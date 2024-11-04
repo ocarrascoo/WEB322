@@ -5,7 +5,7 @@ I declare that this assignment is my own work in accordance with Seneca Academic
 Name: 
 Student ID: 156333221
 Date: Nov 03, 2024
-Vercel Web App URL: 
+Vercel Web App URL: https://web-322-six.vercel.app/
 GitHub Repository URL: https://github.com/ocarrascoo/WEB322
 
 ********************************************************************************/ 
