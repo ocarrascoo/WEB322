@@ -34,6 +34,34 @@ module.exports.getAllItems = function() {
     });
 };
 
+module.exports.getItemsByCategory = function(category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.category == category);
+        if (filteredItems.length === 0) {
+            reject("no results returned");
+        } else {
+            resolve(filteredItems);
+        }
+    });
+};
+
+
+
+module.exports.getItemsByMinDate = function(minDateStr) {
+    return new Promise((resolve, reject) => {
+        const minDate = new Date(minDateStr);
+        const filteredItems = items.filter(item => new Date(item.postDate) >= minDate);
+
+        if (filteredItems.length === 0) {
+            reject("no results returned");
+        } else {
+            resolve(filteredItems);
+        }
+    });
+};
+
+
+
 module.exports.getPublishedItems = function() {
     return new Promise((resolve, reject) => {
         const publishedItems = items.filter(item => item.published === true);
@@ -51,6 +79,29 @@ module.exports.getCategories = function() {
             reject("no results returned");
         } else {
             resolve(categories);
+        }
+    });
+};
+
+
+module.exports.addItem = function(itemData) {
+    return new Promise((resolve, reject) => {
+        itemData.published = itemData.published !== undefined ? true : false;
+        itemData.id = items.length + 1; 
+        items.push(itemData);  
+        resolve(itemData);  
+    });
+};
+
+
+module.exports.getItemById = function(id) {
+    return new Promise((resolve, reject) => {
+        const item = items.find(item => item.id === id);
+
+        if (item) {
+            resolve(item);
+        } else {
+            reject("no result returned");
         }
     });
 };
